@@ -1,8 +1,8 @@
-app/build/
-
 node_modules/
 bower_components/
 .sass-cache/
+
+npm-debug.log
 
 # OSX
 .DS_Store
