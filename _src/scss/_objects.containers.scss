@@ -1,0 +1,8 @@
+.container {
+  max-width: 75em;
+  margin: 0 auto;
+
+  @include bp-medium {
+    max-width: 12em;
+  }
+}
