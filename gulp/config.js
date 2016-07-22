@@ -1,8 +1,8 @@
-var src = '_src';
-var build = '_dist';
+var src = 'src/client';
+var build = 'bin/client';
 
 module.exports = {
-  
+
   browsersync: {
     development: {
       server: {
@@ -11,34 +11,36 @@ module.exports = {
       port: 8080,
       files: [
         build + '/css/*.css',
-        build + '/js/*.js',
+        build + '/*.html',
         build + '/images/**',
-        build + '/fonts/*'
+        build + '/js/**/*.js'
       ]
     }
   },
 
-  sass: {
+  scss: {
     src:  src + '/scss/**/*.{sass,scss}',
-    dest: build + '/css/',
+    dest: build + '/css/'
   },
 
-  jade: {
-    src:  src + '/jade/**/*.jade',
-    dest: build,
+  pug: {
+    src:  src + '/pug/**/*.pug',
+    dest: build
   },
 
   autoprefixer: {
     browsers: [
       'last 2 versions',
-      'safari 5',
+      'Safari >= 8',
       'ie 8',
-      'ie 9',
-      'opera 12.1',
-      'ios 6',
-      'android 4'
+      'ie 9'
     ],
     cascade: false
+  },
+
+  modernizr: {
+    src:  src + '/js/**/*.js',
+    dest: build + '/js/'
   },
 
   browserify: {
@@ -53,40 +55,36 @@ module.exports = {
         entries: './' + src + '/js/main.jsx',
         dest: build + '/js',
         outputName: 'main.js'
-      },
-      {
-        entries: './' + src + '/js/vendor',
-        dest: build + '/js',
-        outputName: 'vendor.js'
       }
     ]
   },
 
   image: {
     src: src + '/images/**/*.{jpg,png,gif,svg}',
-    dest: build + '/images/',
+    dest: build + '/images/'
+  },
+
+  svg: {
+    src: src + '/svg/*.svg',
+    dest: src + '/svg',
+    mode: {
+      symbol: {
+        dest: '.',
+        sprite: 'svg-sprite.svg'
+      }
+    }
   },
 
   watch: {
-    sass:    src + '/scss/**/*.{sass,scss}',
-    scripts: src + '/js/**/*.{js,jsx}',
+    sass: src + '/scss/**/*.{sass,scss}',
+    pug: src + '/pug/**/*.pug',
     images:  src + '/images/**/*',
-    jade: src + '/jade/**/*.jade'
-  },
-
-  fonts: {
-    src:  src + '/fonts/*',
-    dest: build + '/fonts'
+    scripts: src + '/js/**/*'
   },
 
   favicons: {
     src:  src + '/favicons/*',
     dest: build
-  },
-
-  modernizr: {
-    src: src + '/js/*.js',
-    dest: build + '/js/'
   },
 
   optimize: {
@@ -104,4 +102,5 @@ module.exports = {
       options: {}
     }
   }
-};
+
+}
