@@ -1,6 +1,6 @@
 import React from 'react';
 
-class List extends React.Component {
+class ListItem extends React.Component {
   render() {
     return (
       <li>
@@ -10,4 +10,4 @@ class List extends React.Component {
   }
 }
 
-export default ListItem;
+export default ListItem

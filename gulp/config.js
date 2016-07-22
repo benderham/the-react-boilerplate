@@ -1,5 +1,5 @@
-var src = 'src/client';
-var build = 'bin/client';
+var src = 'src';
+var build = 'public';
 
 module.exports = {
 

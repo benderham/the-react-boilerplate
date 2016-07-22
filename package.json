@@ -4,8 +4,7 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register test/**/*.js",
     "postinstall": "node node_modules/bower/bin/bower install",
-    "build": "gulp build",
-    "start": "npm test && npm run build"
+    "start": "npm test && gulp"
   },
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js"
