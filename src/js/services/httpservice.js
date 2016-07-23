@@ -1,10 +1,10 @@
-import Fetch from 'whatwg-fetch';
-const baseUrl = 'http://localhost:6069';
+import Fetch from 'whatwg-fetch'
+const baseUrl = window.location.protocol + "//" + window.location.host;
 
 const service = {
   get(url) {
     return fetch(baseUrl + url)
-    .then(response => response.json());
+    .then(response => response.json())
   },
   post(url, ingredient) {
     return fetch(baseUrl + url, {
@@ -14,8 +14,8 @@ const service = {
       },
       method: 'post',
       body: JSON.stringify(ingredient)
-    }).then(response => response);
+    }).then(response => response)
   }
 };
 
-export default service;
+export default service

@@ -1,19 +1,24 @@
-import React from 'react';
-import ListItem from './ListItem.jsx';
-import Reflux from 'reflux';
-import Actions from './../reflux/actions.jsx';
-import IngredientStore from './../reflux/ingredients-store.jsx';
+import React from 'react'
+import ListItem from './ListItem.jsx'
+import Reflux from 'reflux'
+import Actions from './../reflux/actions.jsx'
+import IngredientStore from './../reflux/ingredients-store.jsx'
+import mixins from 'es6-mixins'
 
 
 class List extends React.Component {
-  //mixins: [Reflux.listenTo(IngredientStore, 'onChange')],
+  
   constructor() {
     super()
     this.state = {
       ingredients:[],
       newText: ""
     }
+
+    mixins([Reflux.listenTo(IngredientStore, 'onChange')], this)
+
     this.onInputChange = this.onInputChange.bind(this)
+    //this.onChange = this.onChange.bind(this)
     this.onClick = this.onClick.bind(this)
   }
   componentWillMount() {
@@ -29,7 +34,6 @@ class List extends React.Component {
     if (this.state.newText) {
       Actions.postIngredient(this.state.newText)
     }
-
     this.setState({
       newText: ""
     })
@@ -51,4 +55,4 @@ class List extends React.Component {
   }
 }
 
-export default List
+export default List;
